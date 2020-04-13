@@ -13,8 +13,7 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  var regex = '\\d+';
-  return input.match(regex);
+  return /\d/.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,6 +25,8 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
+  let result = str.match(/\b[A-Z].*?\b/g);
+  return result ? result : [];
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,7 +36,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  const expectedArr = [];
+  const re = /^[A-J]/g;
+  arr.forEach(city => {
+    if(city.match(re)) {
+      expectedArr.push(city);
+    }
+  });
+  return expectedArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -51,7 +59,11 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-  // Solution code here...
+  if (typeof input === 'string' && input.includes('ober')) {
+    return /^[O,o]ctober$/.test(input);
+  } else {
+    return /^[O,o]ct$/.test(input);
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,7 +77,7 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  // Solution code here...
+  return str.match(/\w+ /g);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,7 +93,7 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 let hangman = (str) => {
-  // Solution code here...
+  return str.replace(/[aeiou]/ig,'_');
 };
 
 /* ------------------------------------------------------------------------------------------------
