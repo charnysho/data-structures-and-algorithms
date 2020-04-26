@@ -9,7 +9,11 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  let result =[];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(arr[i].charAt(0).toUpperCase() + arr[i].slice(1));
+  }
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,7 +88,21 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let result = '';
+  let lukesMass = 0;
+  arr.map(function(item) {
+    if (item.name === 'Luke Skywalker') {
+      lukesMass = item.mass;
+    }
+    if(parseInt(item.mass) > parseInt(lukesMass)) {
+      if(result === '') {
+        result = item.name;
+      } else {
+        result = result + ' - ' + item.name;
+      }
+    }
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -102,7 +120,17 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  if(property === 'price') {
+    return arr.sort(function(a, b){
+      return a.price-b.price;
+    });
+  } else {
+    return arr.sort(function(a, b){
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
+      return 0;
+    });
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -118,7 +146,11 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-// Solution code here...
+  if (url.includes('https://')) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
