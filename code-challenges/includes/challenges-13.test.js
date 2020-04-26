@@ -9,7 +9,11 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['t', 
 ------------------------------------------------------------------------------------------------ */
 
 const firstLetters = (arr) => {
-  // Solution code here...
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(arr[i].charAt(0));
+  }
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -21,7 +25,13 @@ For example, ['this is great :)', 'wow', 'whyyyyyy :(', ':)))))'] returns ['this
 ------------------------------------------------------------------------------------------------ */
 
 const findHappiness = (arr) => {
-  // Solution code here...
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[i].includes(':)')) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,7 +43,11 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-  // Solution code here...
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(arr[i].replace(/[^\d]/g, ''));
+  }
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,7 +59,13 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  // Solution code here...
+  let result = '';
+  for (var i = 0; i < str.length; i++) {
+    if (i % 2 !== 0) {
+      result = result + str[i];
+    }
+  }
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,7 +75,12 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  // Solution code here...
+  for (let i = 0; i < arr.length; i++) {
+    if(!arr[i].includes(':)')) {
+      return false;
+    }
+  }
+  return true;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,7 +90,13 @@ Write a function named findAnything that takes in an array of strings, along wit
 ------------------------------------------------------------------------------------------------ */
 
 const findAnything = (arr, target) => {
-  // Solution code here...
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if(arr[i].includes(target)) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,7 +106,12 @@ Write a function named findEvery that takes in an array of strings, along with a
 ------------------------------------------------------------------------------------------------ */
 
 const findEvery = (arr, target) => {
-  // Solution code here...
+  for (let i = 0; i < arr.length; i++) {
+    if(!arr[i].includes(target)) {
+      return false;
+    }
+  }
+  return true;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -91,7 +127,18 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 ------------------------------------------------------------------------------------------------ */
 
 const unenrollBrook = (arr) => {
-  // Solution code here...
+  let result = [];
+  let res = [];
+  for(var i=0; i<arr.length; i++) {
+    for(var j=0; j<arr[i].length; j++) {
+      if(!arr[i][j].includes('Brook')) {
+        res.push(arr[i][j]);
+      }
+    }
+    result.push(res);
+    res = [];
+  }
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
